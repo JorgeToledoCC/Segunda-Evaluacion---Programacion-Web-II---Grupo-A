@@ -1,0 +1,59 @@
+@page
+@model WebApplication2.Pages.Proyectos.DetailsModel
+@{
+    ViewData["Title"] = "Detalle de proyecto";
+}
+
+<div class="encabezado">
+    <h1>Detalle de proyecto</h1>
+    <p class="mb-0">Proyecto y jefe asignado</p>
+</div>
+
+<p><a asp-page="Index" class="btn btn-outline-verde">Volver al listado</a></p>
+
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger">@Model.MensajeError</div>
+}
+else if (Model.Proyecto is not null)
+{
+    <div class="row g-3">
+        <div class="col-md-7">
+            <div class="tarjeta h-100">
+                <h5 class="texto-verde">Proyecto</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">ID</dt>
+                    <dd class="col-sm-8"><code>@Model.Proyecto.Id</code></dd>
+
+                    <dt class="col-sm-4">Nombre</dt>
+                    <dd class="col-sm-8">@Model.Proyecto.Nombre</dd>
+
+                    <dt class="col-sm-4">Descripción</dt>
+                    <dd class="col-sm-8">@Model.Proyecto.Descripcion</dd>
+
+                    <dt class="col-sm-4">Estado</dt>
+                    <dd class="col-sm-8"><span class="badge-estado">@Model.Proyecto.Estado</span></dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="tarjeta h-100">
+                <h5 class="texto-verde">Jefe asignado</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-5">ID</dt>
+                    <dd class="col-sm-7"><code>@Model.Proyecto.IdJefe</code></dd>
+
+                    <dt class="col-sm-5">Nombre</dt>
+                    <dd class="col-sm-7">@Model.Proyecto.JefeNombre</dd>
+
+                    <dt class="col-sm-5">Cargo</dt>
+                    <dd class="col-sm-7">@Model.Proyecto.JefeCargo</dd>
+
+                    <dt class="col-sm-5">Correo</dt>
+                    <dd class="col-sm-7">@Model.Proyecto.JefeCorreo</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+}

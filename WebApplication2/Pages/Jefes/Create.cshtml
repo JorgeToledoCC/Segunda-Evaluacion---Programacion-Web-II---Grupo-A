@@ -1,0 +1,42 @@
+@page
+@model WebApplication2.Pages.Jefes.CreateModel
+@{
+    ViewData["Title"] = "Nuevo jefe";
+}
+
+<div class="encabezado">
+    <h1>Nuevo jefe</h1>
+    <p class="mb-0">Completá los datos del jefe</p>
+</div>
+
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger">@Model.MensajeError</div>
+}
+
+<form method="post" class="tarjeta-form">
+    <div class="mb-3">
+        <label asp-for="Jefe.Nombre" class="form-label">Nombre</label>
+        <input asp-for="Jefe.Nombre" class="form-control" />
+        <span asp-validation-for="Jefe.Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Jefe.Cargo" class="form-label">Cargo</label>
+        <input asp-for="Jefe.Cargo" class="form-control" />
+        <span asp-validation-for="Jefe.Cargo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Jefe.Correo" class="form-label">Correo</label>
+        <input asp-for="Jefe.Correo" type="email" class="form-control" />
+        <span asp-validation-for="Jefe.Correo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-verde">Guardar</button>
+    <a asp-page="Index" class="btn btn-outline-verde">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

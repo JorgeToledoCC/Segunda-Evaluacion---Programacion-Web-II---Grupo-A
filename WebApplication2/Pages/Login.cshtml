@@ -1,0 +1,42 @@
+@page
+@model WebApplication2.Pages.LoginModel
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+<div class="tarjeta-auth">
+    <h1>Iniciar sesión</h1>
+    <p class="texto-suave mb-4">Ingresá para acceder al sistema de proyectos</p>
+
+    @if (TempData["Mensaje"] is string mensaje)
+    {
+        <div class="alert alert-success">@mensaje</div>
+    }
+
+    @if (Model.MensajeError is not null)
+    {
+        <div class="alert alert-danger">@Model.MensajeError</div>
+    }
+
+    <form method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div class="mb-3">
+            <label asp-for="Login.NombreUsuario" class="form-label">Usuario</label>
+            <input asp-for="Login.NombreUsuario" class="form-control" autocomplete="username" />
+            <span asp-validation-for="Login.NombreUsuario" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Login.Password" class="form-label">Contraseña</label>
+            <input asp-for="Login.Password" type="password" class="form-control" autocomplete="current-password" />
+            <span asp-validation-for="Login.Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-verde w-100">Ingresar</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

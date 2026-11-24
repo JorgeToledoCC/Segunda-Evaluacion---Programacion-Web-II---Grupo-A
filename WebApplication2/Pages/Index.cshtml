@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="encabezado">
+    <h1>Sistema de Proyectos</h1>
+    <p class="mb-0">Gestión de jefes y proyectos</p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="tarjeta h-100">
+            <h5>Jefes</h5>
+            <p>Registrá jefes y consultá su información.</p>
+            <a asp-page="/Jefes/Index" class="btn btn-verde">Ver jefes</a>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="tarjeta h-100">
+            <h5>Proyectos</h5>
+            <p>Creá proyectos y buscalos por ID para ver su jefe.</p>
+            <a asp-page="/Proyectos/Index" class="btn btn-verde">Ver proyectos</a>
+        </div>
+    </div>
+</div>

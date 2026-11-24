@@ -1,0 +1,53 @@
+@page
+@model WebApplication2.Pages.Proyectos.CreateModel
+@{
+    ViewData["Title"] = "Nuevo proyecto";
+}
+
+<div class="encabezado">
+    <h1>Nuevo proyecto</h1>
+    <p class="mb-0">Completá los datos y elegí un jefe</p>
+</div>
+
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger">@Model.MensajeError</div>
+}
+
+<form method="post" class="tarjeta-form">
+    <div class="mb-3">
+        <label asp-for="Proyecto.Nombre" class="form-label">Nombre</label>
+        <input asp-for="Proyecto.Nombre" class="form-control" />
+        <span asp-validation-for="Proyecto.Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Proyecto.Descripcion" class="form-label">Descripción</label>
+        <textarea asp-for="Proyecto.Descripcion" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Proyecto.Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Proyecto.Estado" class="form-label">Estado</label>
+            <input asp-for="Proyecto.Estado" class="form-control" />
+            <span asp-validation-for="Proyecto.Estado" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Proyecto.IdJefe" class="form-label">Jefe</label>
+            <select asp-for="Proyecto.IdJefe" asp-items="Model.Jefes" class="form-select">
+                <option value="">-- Seleccione un jefe --</option>
+            </select>
+            <span asp-validation-for="Proyecto.IdJefe" class="text-danger"></span>
+            <div class="form-text">Un jefe solo puede estar a cargo de un proyecto.</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-verde">Guardar</button>
+    <a asp-page="Index" class="btn btn-outline-verde">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
